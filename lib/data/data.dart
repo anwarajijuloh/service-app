@@ -1,0 +1,146 @@
+import '../models/model.dart';
+
+final List<Role> dataRole = [
+  Role(
+    roleId: 1,
+    roleName: 'karyawan',
+  ),
+  Role(
+    roleId: 2,
+    roleName: 'teknisi',
+  ),
+];
+
+final List<Person> dataPerson = [
+  Person(
+    dataRole[0],
+    personId: 'pid_1',
+    name: 'Zidane Teknisi',
+    username: 'zidane',
+    password: 'teknisi123',
+    job: 'Teknisi',
+  ),
+  Person(
+    dataRole[1],
+    personId: 'pid_2',
+    name: 'Malika Akuntansi',
+    username: 'malika',
+    password: 'akuntansi123',
+    job: 'Akuntansi',
+  ),
+  Person(
+    dataRole[1],
+    personId: 'pid_3',
+    name: 'Michela Sekper',
+    username: 'michela',
+    password: 'sekper123',
+    job: 'Sekper',
+  ),
+  Person(
+    dataRole[1],
+    personId: 'pid_4',
+    name: 'Katerine OPS1',
+    username: 'katerine',
+    password: 'ops123',
+    job: 'OPS1',
+  ),
+];
+
+final List<Report> dataReport = [
+  Report(
+    dataPerson[1],
+    reportId: 'lid_1',
+    title: 'Blue Screen Laptop',
+    type: 'Software',
+    description: 'Laptop mengalami blue screen',
+    note: 'ruangan1',
+    createAt: DateTime(2024, 2, 27, 14, 30),
+    status: 'open',
+    image: 'https://picsum.photos/id/1/200/300',
+  ),
+  Report(
+    dataPerson[1],
+    reportId: 'lid_2',
+    title: 'Komputer lemot pisan',
+    type: 'Hardware',
+    description: 'Loading terlalu lama saat membuka aplikasi',
+    note: 'ruangan2',
+    createAt: DateTime(2024, 2, 28, 08, 45),
+    status: 'open',
+    image: 'https://picsum.photos/id/2/200/300',
+  ),
+  Report(
+    dataPerson[1],
+    reportId: 'lid_3',
+    title: 'Upgrade Processor',
+    type: 'Hardware',
+    description: 'Ganti prosessor dengan Intel i5 4500k',
+    note: 'ruangan2',
+    createAt: DateTime(2024, 3, 01, 11, 12),
+    status: 'open',
+    image: 'https://picsum.photos/id/3/200/300',
+  ),
+  Report(
+    dataPerson[2],
+    reportId: 'lid_4',
+    title: 'Keyboard Error',
+    type: 'Hardware',
+    description: 'Sebagian keyboard tidak berfungsi',
+    note: 'ruangan3',
+    createAt: DateTime(2024, 3, 01, 12, 50),
+    status: 'open',
+    image: 'https://picsum.photos/id/4/200/300',
+  ),
+  Report(
+    dataPerson[2],
+    reportId: 'lid_5',
+    title: 'Upgrade Ram Laptop',
+    type: 'Hardware',
+    description: 'Tambah ram laptop DDR4 4GB',
+    note: 'ruangan2',
+    createAt: DateTime(2024, 3, 02, 15, 40),
+    status: 'open',
+    image: 'https://picsum.photos/id/5/200/300',
+  ),
+  Report(
+    dataPerson[3],
+    reportId: 'lid_6',
+    title: 'Batrai Lapotop',
+    type: 'Hardware',
+    description: 'Tidak berfungsi dan harus diganti',
+    note: 'ruangan1',
+    createAt: DateTime(2024, 3, 03, 09, 24),
+    status: 'open',
+    image: 'https://picsum.photos/id/6/200/300',
+  ),
+];
+
+final List<ReportProgress> dataReportProgress = [
+  ReportProgress(
+    dataReport[0],
+    reportProgressId: 'lpid_1',
+    title: 'Cek Kerusakan',
+    description: 'Identifikasi Kerusakan',
+    createAt: DateTime(2024, 2, 27, 16, 12),
+    estimatedProgress: '2',
+    actualProgress: 'Jam',
+  ),
+  ReportProgress(
+    dataReport[0],
+    reportProgressId: 'lpid_2',
+    title: 'Reset ulang OS',
+    description: 'Install ulang windows 10',
+    createAt: DateTime(2024, 2, 28, 09, 00),
+    estimatedProgress: '2',
+    actualProgress: 'Jam',
+  ),
+  ReportProgress(
+    dataReport[0],
+    reportProgressId: 'lpid_1',
+    title: 'Install Aplikasi',
+    description: 'install aplikasi microsoft dan adobe',
+    createAt: DateTime(2024, 2, 28, 10, 30),
+    estimatedProgress: '1',
+    actualProgress: 'Jam',
+  ),
+];
