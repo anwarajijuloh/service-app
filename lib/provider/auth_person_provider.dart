@@ -1,14 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:service_app/data/data.dart';
-import 'package:service_app/models/model.dart';
 
-class AuthPerson with ChangeNotifier{
-  List<Person> get personAuth{
+import '../data/data.dart';
+import '../models/models.dart';
+
+class AuthPerson with ChangeNotifier {
+  bool _isLogin = false;
+  String _errorMessage = '';
+  late Person _loggedIn;
+
+  bool get isLogin => _isLogin;
+  String get errorMessage => _errorMessage;
+  Person get loggedInUser => _loggedIn;
+  List<Person> get person {
     return [...dataPerson];
   }
 
-  void loginPerson(String username, String password){
-    dataPerson.where((person) => person.username == username && person.password == password);
-    notifyListeners();
+  List<Report> get report {
+    return [...dataReport];
+  }
+
+  void login(String uname, String passw) {
+    for (Person person in dataPerson) {
+      if (person.username == uname && person.password == passw) {
+        if (person.roleId.roleId == 0) {
+          _isLogin = true;
+          _errorMessage = '';
+          _loggedIn = person;
+          dataPerson;
+          dataReport;
+        } else {
+          List<Report> filteredReport = [];
+          for (Report report in dataReport) {
+            if (report.personId.personId == person.personId) {
+              filteredReport.add(report);
+              _isLogin = true;
+              _errorMessage = '';
+              _loggedIn = person;
+            }
+          }
+        }
+      } else {
+        _isLogin = false;
+        _errorMessage = 'Invalid Username or Password';
+      }
+      notifyListeners();
+    }
   }
 }
