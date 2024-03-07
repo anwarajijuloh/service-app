@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
         theme: ThemeData(
           colorSchemeSeed: Palette.serviceGreen,
         ),
-        initialRoute: '/login',
+        initialRoute: HomeScreen.routeName,
         routes: {
           HomeScreen.routeName: (_) => const HomeScreen(),
           LoginScreen.routeName: (_) => const LoginScreen(),
