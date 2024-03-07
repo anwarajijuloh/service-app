@@ -32,6 +32,7 @@ class MainApp extends StatelessWidget {
           HomeScreen.routeName: (_) => const HomeScreen(),
           LoginScreen.routeName: (_) => const LoginScreen(),
           RegisterScreen.routeName: (_) => const RegisterScreen(),
+          ResetPasswordScreen.routeName: (_) => const ResetPasswordScreen(),
         },
       ),
     );

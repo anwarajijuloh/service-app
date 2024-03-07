@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:service_app/provider/auth_person_provider.dart';
 
-import '../widgets/widgets.dart';
+import '/provider/auth_person_provider.dart';
+import '/widgets/widgets.dart';
 import 'screens.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -14,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authPerson = Provider.of<AuthPerson>(context);
+
     final TextEditingController uname = TextEditingController();
     final TextEditingController passw = TextEditingController();
     return Scaffold(
@@ -48,17 +49,22 @@ class LoginScreen extends StatelessWidget {
                 String password = passw.text;
                 authPerson.login(username, password);
                 if(authPerson.isLogin){
-                  Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+                  Navigator.of(context).pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
                 }
               },
             ),
             const SizedBox(height: 5),
             CustomButton(
               name: 'Daftar',
-              myfunction: () {},
+              myfunction: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(RegisterScreen.routeName, (route) => false);
+              },
             ),
             const SizedBox(height: 25),
-            TextButton(onPressed: () {}, child: const Text('Lupa Password?'))
+            TextButton(onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                    ResetPasswordScreen.routeName, (route) => false);
+            }, child: const Text('Lupa Password?'))
           ],
         ),
       ),

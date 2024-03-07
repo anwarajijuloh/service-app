@@ -13,10 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dataReport = Provider.of<AuthPerson>(context);
-    final dataPerson = Provider.of<AuthPerson>(context);
-    final allReport = dataReport.report;
-    final person = dataPerson.person;
+    final myPerson = Provider.of<AuthPerson>(context).loggedPerson;
     List<Tab> myTabs = [
       const Tab(
         text: 'All',
@@ -38,16 +35,16 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Palette.serviceGreen,
           foregroundColor: Palette.primaryGreen,
-          title: const Column(
+          title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Report List',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
-                'Welcome }',
-                style: TextStyle(fontSize: 12),
+                'Welcome, $myPerson',
+                style: const TextStyle(fontSize: 12),
               ),
             ],
           ),

@@ -1,49 +1,29 @@
 import 'package:flutter/material.dart';
 
-import '../data/data.dart';
-import '../models/models.dart';
+import '/data/data.dart';
+import '/models/models.dart';
 
 class AuthPerson with ChangeNotifier {
   bool _isLogin = false;
   String _errorMessage = '';
-  late Person _loggedIn;
+  String _loggedPerson = '';
 
   bool get isLogin => _isLogin;
   String get errorMessage => _errorMessage;
-  Person get loggedInUser => _loggedIn;
-  List<Person> get person {
-    return [...dataPerson];
-  }
+  String get loggedPerson => _loggedPerson;
 
-  List<Report> get report {
-    return [...dataReport];
-  }
-
-  void login(String uname, String passw) {
+  void login(String username, String password) {
     for (Person person in dataPerson) {
-      if (person.username == uname && person.password == passw) {
-        if (person.roleId.roleId == 0) {
-          _isLogin = true;
-          _errorMessage = '';
-          _loggedIn = person;
-          dataPerson;
-          dataReport;
-        } else {
-          List<Report> filteredReport = [];
-          for (Report report in dataReport) {
-            if (report.personId.personId == person.personId) {
-              filteredReport.add(report);
-              _isLogin = true;
-              _errorMessage = '';
-              _loggedIn = person;
-            }
-          }
-        }
-      } else {
-        _isLogin = false;
-        _errorMessage = 'Invalid Username or Password';
+      if (person.username == username && person.password == password) {
+        _isLogin = true;
+        _errorMessage = '';
+        _loggedPerson = person.name;
+        notifyListeners();
+        return;
       }
-      notifyListeners();
     }
+    _isLogin = false;
+    _errorMessage = 'Invalid Username or Password';
+    notifyListeners();
   }
 }

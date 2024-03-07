@@ -21,11 +21,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.mycontroller,
-      obscureText: widget.hintText == "Password" ? !_isObscure : _isObscure,
+      obscureText: widget.hintText == "Password" || widget.hintText == "Konfirmasi Password" ? !_isObscure : _isObscure,
       decoration: InputDecoration(
           hintText: widget.hintText,
           prefixIcon: Icon(widget.prefixIcon),
-          suffixIcon: widget.hintText == "Password"
+          suffixIcon: widget.hintText == "Password" || widget.hintText == "Konfirmasi Password"
               ? IconButton(
                   onPressed: () {
                     _isObscure = !_isObscure;
