@@ -28,8 +28,11 @@ class LoginScreen extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            Consumer<AuthPerson>(builder: (contex, authPerson, child){
-              return Text(authPerson.errorMessage,style: const TextStyle(color: Colors.red, fontSize: 10),);
+            Consumer<AuthPerson>(builder: (contex, authPerson, child) {
+              return Text(
+                authPerson.errorMessage,
+                style: const TextStyle(color: Colors.red, fontSize: 10),
+              );
             }),
             CustomTextField(
               mycontroller: uname,
@@ -48,8 +51,9 @@ class LoginScreen extends StatelessWidget {
                 String username = uname.text;
                 String password = passw.text;
                 authPerson.login(username, password);
-                if(authPerson.isLogin){
-                  Navigator.of(context).pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
+                if (authPerson.isLogin) {
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
                 }
               },
             ),
@@ -57,14 +61,17 @@ class LoginScreen extends StatelessWidget {
             CustomButton(
               name: 'Daftar',
               myfunction: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(RegisterScreen.routeName, (route) => false);
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    RegisterScreen.routeName, (route) => false);
               },
             ),
             const SizedBox(height: 25),
-            TextButton(onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                    ResetPasswordScreen.routeName, (route) => false);
-            }, child: const Text('Lupa Password?'))
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      ResetPasswordScreen.routeName, (route) => false);
+                },
+                child: const Text('Lupa Password?'))
           ],
         ),
       ),

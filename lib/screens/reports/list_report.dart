@@ -1,25 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:provider/provider.dart';
-import 'package:service_app/data/data.dart';
-import 'package:service_app/provider/providers.dart';
 
+import '../../provider/providers.dart';
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
 class ListReport extends StatelessWidget {
-  const ListReport({super.key});
+  final String menu;
+  const ListReport({super.key, required this.menu});
 
   @override
   Widget build(BuildContext context) {
-    final report = Provider.of<ReportProvider>(context).report;
-    const String personId = 'pid_3';
-    List<Report> filtered = [];
-    for (Report myreport in report) {
-      if (myreport.personId.personId == personId) {
-        filtered.add(myreport);
-      }else{
-        filtered.add(myreport);
+    final allreport = Provider.of<ReportProvider>(context).report;
+    final personLogin = Provider.of<AuthPerson>(context).logged;
+    List<Report> reports = [];
+    if (personLogin!.role != 'teknisi') {
+      for (Report myreport in allreport) {
+        if (myreport.personId.personId == personLogin.personId) {
+          if (myreport.status == menu) {
+            reports.add(myreport);
+          } else if (myreport.status == 'all') {
+            reports = allreport;
+          }
+        }
+      }
+    } else {
+      for (Report myreport in allreport) {
+        if (myreport.status == menu) {
+          reports.add(myreport);
+        }
       }
     }
 
@@ -28,14 +38,15 @@ class ListReport extends StatelessWidget {
         await Future.delayed(const Duration(seconds: 4));
       },
       child: ListView.builder(
-        itemCount: filtered.length,
+        itemCount: reports.length,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         itemBuilder: (ctx, i) {
           return ReportItem(
-            title: filtered[i].title,
-            subtitle: filtered[i].description,
-            progress: filtered[i].status,
-            create: filtered[i].createAt.hour.toString(),
+            id: reports[i].reportId,
+            title: reports[i].title,
+            subtitle: reports[i].description,
+            progress: reports[i].status,
+            create: reports[i].createAt.hour.toString(),
           );
         },
       ),

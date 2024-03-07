@@ -1,48 +1,38 @@
 import '../models/models.dart';
 
-final List<Role> dataRole = [
-  Role(
-    roleId: 1,
-    roleName: 'karyawan',
-  ),
-  Role(
-    roleId: 2,
-    roleName: 'teknisi',
-  ),
-];
 
 final List<Person> dataPerson = [
   Person(
-    dataRole[0],
     personId: 'pid_1',
     name: 'Zidane Teknisi',
     username: 'zidane',
     password: 'teknisi123',
     job: 'Teknisi',
+    role: 'teknisi',
   ),
   Person(
-    dataRole[1],
     personId: 'pid_2',
     name: 'Malika Akuntansi',
     username: 'malika',
     password: 'akuntansi123',
     job: 'Akuntansi',
+    role: 'karyawan',
   ),
   Person(
-    dataRole[1],
     personId: 'pid_3',
     name: 'Michela Sekper',
     username: 'michela',
     password: 'sekper123',
     job: 'Sekper',
+    role: 'karyawan',
   ),
   Person(
-    dataRole[1],
     personId: 'pid_4',
     name: 'Katerine OPS1',
     username: 'katerine',
     password: 'ops123',
     job: 'OPS1',
+    role: 'karyawan',
   ),
 ];
 
@@ -55,7 +45,7 @@ final List<Report> dataReport = [
     description: 'Laptop mengalami blue screen',
     note: 'ruangan1',
     createAt: DateTime(2024, 2, 27, 14, 30),
-    status: 'open',
+    status: 'progress',
     image: 'https://picsum.photos/id/1/200/300',
   ),
   Report(

@@ -4,6 +4,7 @@ import 'package:service_app/provider/auth_person_provider.dart';
 
 import '../config/palette.dart';
 import 'reports/reports.dart';
+import 'screens.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/';
@@ -13,7 +14,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myPerson = Provider.of<AuthPerson>(context).loggedPerson;
+    final authPerson = Provider.of<AuthPerson>(context);
+    final myPerson = authPerson.logged;
     List<Tab> myTabs = [
       const Tab(
         text: 'All',
@@ -43,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               Text(
-                'Welcome, $myPerson',
+                'Welcome, ${myPerson!.name}',
                 style: const TextStyle(fontSize: 12),
               ),
             ],
@@ -53,9 +55,10 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               icon: const Icon(Icons.logout),
               onPressed: () {
-                // Navigator.of(context).pushNamed(
-                //   LoginScreen.routeName,
-                // );
+                authPerson.logout();
+                Navigator.of(context).pushNamed(
+                  LoginScreen.routeName,
+                );
               },
             ),
           ],
@@ -72,13 +75,14 @@ class HomeScreen extends StatelessWidget {
         ),
         body: const TabBarView(
           children: <Widget>[
-            ListReport(),
-            Center(child: Text('Tab2'),),
-            Center(child: Text('Tab3'),),
-            Center(child: Text('Tab4'),),
+            ListReport(menu: 'all',),
+            ListReport(menu: 'open',),
+            ListReport(menu: 'progress',),
+            ListReport(menu: 'done',),
           ],
         ),
-        floatingActionButton:
+        
+        floatingActionButton: authPerson.logged!.role == 'teknisi' ? null:
             FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
       ),
     );
