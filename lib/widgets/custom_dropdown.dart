@@ -40,10 +40,9 @@ class _CustomDropdownState extends State<CustomDropdown> {
             child: Text(
               'Bagian',
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.grey[700]
-              ),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey[700]),
             ),
           ),
           DropdownButton(

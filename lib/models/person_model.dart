@@ -12,6 +12,6 @@ class Person {
     required this.username,
     required this.password,
     required this.job,
-    required this.role, 
+    required this.role,
   });
 }

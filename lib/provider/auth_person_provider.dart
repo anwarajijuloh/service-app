@@ -9,7 +9,7 @@ class AuthPerson with ChangeNotifier {
   Person? _logged;
   List<Person> _person = [];
 
-  AuthPerson(){
+  AuthPerson() {
     _person = dataPerson;
   }
 
@@ -18,25 +18,6 @@ class AuthPerson with ChangeNotifier {
   Person? get logged => _logged;
   List<Person> get person => _person;
 
-  void login(String username, String password) {
-    _logged = _person.firstWhere((user) => user.username == username && user.password == password);
-    if(_logged != null){
-      _isLogin = true;
-      _errorMessage = '';
-      notifyListeners();
-    }else{
-      _isLogin = false;
-      _errorMessage = 'Invalid Username or Password';
-      notifyListeners();
-    }
-  }
-  void logout() {
-    _isLogin = false;
-    _logged = null;
-    notifyListeners();
-  }
+  
 
-  static bool isLoggedIn(){
-    return AuthPerson().isLogin;
-  }
 }

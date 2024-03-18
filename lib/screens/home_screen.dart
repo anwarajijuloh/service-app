@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:service_app/provider/auth_person_provider.dart';
 
 import '../config/palette.dart';
 import 'reports/reports.dart';
@@ -14,8 +12,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authPerson = Provider.of<AuthPerson>(context);
-    final myPerson = authPerson.logged;
     List<Tab> myTabs = [
       const Tab(
         text: 'All',
@@ -35,18 +31,22 @@ class HomeScreen extends StatelessWidget {
       length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
+          toolbarHeight: 82,
           backgroundColor: Palette.serviceGreen,
           foregroundColor: Palette.primaryGreen,
-          title: Column(
+          title: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 'Report List',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
+              SizedBox(
+                height: 8,
+              ),
               Text(
-                'Welcome, ${myPerson!.name}',
-                style: const TextStyle(fontSize: 12),
+                'Welcome,',
+                style: TextStyle(fontSize: 12),
               ),
             ],
           ),
@@ -55,7 +55,6 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               icon: const Icon(Icons.logout),
               onPressed: () {
-                authPerson.logout();
                 Navigator.of(context).pushNamed(
                   LoginScreen.routeName,
                 );
@@ -67,23 +66,27 @@ class HomeScreen extends StatelessWidget {
             indicatorColor: Palette.primaryGreen,
             indicatorWeight: 4,
             unselectedLabelColor: Palette.primaryGreen,
-            unselectedLabelStyle:  const TextStyle(fontSize: 10),
+            unselectedLabelStyle: const TextStyle(fontSize: 10),
             labelColor: Palette.primaryGreen,
-            labelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+            labelStyle:
+                const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
             tabs: myTabs,
           ),
         ),
         body: const TabBarView(
           children: <Widget>[
-            ListReport(menu: 'all',),
-            ListReport(menu: 'open',),
-            ListReport(menu: 'progress',),
-            ListReport(menu: 'done',),
+            ListReport(),
+            ListReport(),
+            ListReport(),
+            ListReport(),
           ],
         ),
-        
-        floatingActionButton: authPerson.logged!.role == 'teknisi' ? null:
-            FloatingActionButton(onPressed: () {}, child: const Icon(Icons.add)),
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(
+                AddReport.routeName,
+              );
+            }, child: const Icon(Icons.add)),
       ),
     );
   }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:service_app/provider/providers.dart';
-import 'package:service_app/screens/reports/detail_report.dart';
+import 'package:service_app/screens/reports/progress_report.dart';
 
+import './reports/detail_report.dart';
 import '../config/palette.dart';
 
 class ReportScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class ReportScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final reportId = ModalRoute.of(context)!.settings.arguments as String;
-    final report = Provider.of<ReportProvider>(context).findById(reportId);
+    final myReport = Provider.of<ReportProvider>(context).findById(reportId);
     List<Tab> reportTab = [
       const Tab(
         text: 'Detail',
@@ -44,12 +45,10 @@ class ReportScreen extends StatelessWidget {
             tabs: reportTab,
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: <Widget>[
-            DetailReport(),
-            Center(
-              child: Text('Tab2'),
-            ),
+            DetailReport(myreport: myReport,),
+            ProgressReport(myreport: myReport,),
             Center(
               child: Text('Tab3'),
             ),

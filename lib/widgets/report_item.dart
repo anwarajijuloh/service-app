@@ -22,7 +22,8 @@ class ReportItem extends StatelessWidget {
     return Card(
       child: ListTile(
         onTap: () {
-          Navigator.of(context).pushNamed(ReportScreen.routeName, arguments: id);
+          Navigator.of(context)
+              .pushNamed(ReportScreen.routeName, arguments: id);
         },
         leading: const Icon(Icons.file_present_rounded),
         title: Text(

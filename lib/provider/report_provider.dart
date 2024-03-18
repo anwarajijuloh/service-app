@@ -12,10 +12,7 @@ class ReportProvider with ChangeNotifier {
 
   List<Report> get report => _report;
 
-  Report findById(reportId){
+  Report findById(reportId) {
     return _report.firstWhere((report) => report.reportId == reportId);
   }
-
-
-  
 }

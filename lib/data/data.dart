@@ -1,6 +1,5 @@
 import '../models/models.dart';
 
-
 final List<Person> dataPerson = [
   Person(
     personId: 'pid_1',
@@ -100,7 +99,7 @@ final List<Report> dataReport = [
     description: 'Tidak berfungsi dan harus diganti',
     note: 'ruangan1',
     createAt: DateTime(2024, 3, 03, 09, 24),
-    status: 'open',
+    status: 'done',
     image: 'https://picsum.photos/id/6/200/300',
   ),
 ];

@@ -1,6 +1,6 @@
 import 'report_model.dart';
 
-class Submission{
+class Submission {
   final String submissionId;
   final String title;
   final String description;
@@ -8,5 +8,11 @@ class Submission{
   final String status;
   final Report lid;
 
-  Submission({required this.submissionId, required this.title, required this.description, required this.createAt, required this.status, required this.lid});
+  Submission(
+      {required this.submissionId,
+      required this.title,
+      required this.description,
+      required this.createAt,
+      required this.status,
+      required this.lid});
 }

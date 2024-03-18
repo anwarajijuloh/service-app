@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../config/palette.dart';
@@ -7,7 +6,9 @@ class CustomButton extends StatelessWidget {
   final Function() myfunction;
   final String name;
   const CustomButton({
-    super.key, required this.myfunction, required this.name,
+    super.key,
+    required this.myfunction,
+    required this.name,
   });
 
   @override
@@ -16,9 +17,8 @@ class CustomButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: const ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(Palette.primaryGreen),
-          backgroundColor: MaterialStatePropertyAll(Palette.serviceGreen)
-        ),
+            foregroundColor: MaterialStatePropertyAll(Palette.primaryGreen),
+            backgroundColor: MaterialStatePropertyAll(Palette.serviceGreen)),
         onPressed: myfunction,
         child: Text(name),
       ),

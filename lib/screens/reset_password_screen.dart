@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:service_app/screens/login_screen.dart';
 
 import '../provider/providers.dart';
 import '../widgets/widgets.dart';
@@ -49,12 +48,7 @@ class ResetPasswordScreen extends StatelessWidget {
             const SizedBox(height: 20),
             CustomButton(
               name: 'Ganti Password',
-              myfunction: () async {
-                await Future.delayed(Duration(seconds: 4));
-                CircularProgressIndicator();
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    LoginScreen.routeName, (route) => false);
-              },
+              myfunction: () {},
             )
           ],
         ),

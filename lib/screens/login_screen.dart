@@ -13,8 +13,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authPerson = Provider.of<AuthPerson>(context);
-
     final TextEditingController uname = TextEditingController();
     final TextEditingController passw = TextEditingController();
     return Scaffold(
@@ -47,15 +45,7 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 20),
             CustomButton(
               name: 'Masuk',
-              myfunction: () {
-                String username = uname.text;
-                String password = passw.text;
-                authPerson.login(username, password);
-                if (authPerson.isLogin) {
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil(HomeScreen.routeName, (route) => false);
-                }
-              },
+              myfunction: () {},
             ),
             const SizedBox(height: 5),
             CustomButton(
