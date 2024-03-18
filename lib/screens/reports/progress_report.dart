@@ -31,7 +31,7 @@ class ProgressReport extends StatelessWidget {
                 timeStamp: '28 Feb\n${(index+3)*2}.00',
                 description: myprogress[index].description,
                 id: (index + 1).toString(),
-                estimated: myprogress[index].estimatedProgress + ' ' + myprogress[index].actualProgress,
+                estimated: '${myprogress[index].estimatedProgress} ${myprogress[index].actualProgress}',
               );
             },
           ),
