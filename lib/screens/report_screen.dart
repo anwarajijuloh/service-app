@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:service_app/provider/providers.dart';
-import 'package:service_app/screens/reports/progress_report.dart';
 
-import './reports/detail_report.dart';
+import '../provider/providers.dart';
 import '../config/palette.dart';
+import 'reports/reports.dart';
 
 class ReportScreen extends StatelessWidget {
   static const routeName = '/report';
@@ -49,9 +48,7 @@ class ReportScreen extends StatelessWidget {
           children: <Widget>[
             DetailReport(myreport: myReport,),
             ProgressReport(myreport: myReport,),
-            Center(
-              child: Text('Tab3'),
-            ),
+            SubmissionReport(),
           ],
         ),
       ),
